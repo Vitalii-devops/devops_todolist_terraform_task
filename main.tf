@@ -28,11 +28,11 @@ module "network" {
   location                    = var.location
   resource_group_name         = var.resource_group_name
   vnet_name                   = var.virtual_network_name
-  vnet_address_space          = var.vnet_address_space
+  vnet_address_space          = var.vnet_address_prefix
   subnet_name                 = var.subnet_name
   subnet_address_prefix       = var.subnet_address_prefix
   network_security_group_name = var.network_security_group_name
-  public_ip_name              = var.public_ip_name
+  public_ip_name              = var.public_ip_address_name
   dns_label                   = var.dns_label
 }
 

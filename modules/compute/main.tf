@@ -20,6 +20,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username                  = "azureuser"
   disable_password_authentication = true
 
+ admin_ssh_key {
+    username   = "azureuser"
+    public_key = azurerm_ssh_public_key.example.public_key_openssh
+  }
 
 
   os_disk {
@@ -38,9 +42,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
 resource "azurerm_ssh_public_key" "example" {
   name                = "linuxboxsshkey"
-  resource_group_name = "example"
-  location            = "West Europe"
-  public_key          = file("~/.ssh/id_rsa.pub")
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  public_key          = var.ssh_key_public
 }
 
 
