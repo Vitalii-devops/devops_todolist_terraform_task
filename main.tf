@@ -3,10 +3,10 @@ provider "azurerm" {
 
 }
 
-# resource "azurerm_resource_group" "example" {
-#   name     = "mate-azure-task-12"
-#   location = "West Europe"
-# }
+resource "azurerm_resource_group" "example" {
+  name     = "mate-azure-task-12"
+  location = "West Europe"
+}
 
 # resource "azurerm_storage_account" "example" {
 #   name                     = "yourstorageaccount22123"

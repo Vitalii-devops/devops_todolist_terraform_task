@@ -27,7 +27,7 @@ variable "storage_account_name" {
 }
 
 variable "storage_container_name" {
-  default = "tfstate"
+  default = "task-artifacts"
 }
 
 variable "network_security_group_name" {

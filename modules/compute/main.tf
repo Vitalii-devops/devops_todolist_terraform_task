@@ -20,10 +20,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username                  = "azureuser"
   disable_password_authentication = true
 
-  admin_ssh_key {
-    username   = "azureuser"
-    public_key = var.ssh_key
-  }
+
 
   os_disk {
     name                 = "${var.vm_name}-osdisk"
@@ -34,9 +31,16 @@ resource "azurerm_linux_virtual_machine" "vm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    sku       = "22.04-LTS"
     version   = "latest"
   }
+}
+
+resource "azurerm_ssh_public_key" "example" {
+  name                = "linuxboxsshkey"
+  resource_group_name = "example"
+  location            = "West Europe"
+  public_key          = file("~/.ssh/id_rsa.pub")
 }
 
 
